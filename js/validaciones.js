@@ -14,18 +14,18 @@ export function valida(input) {
   }
 }
 
-const tipoDeErrores = [
+const tipoDeErrores = [       // arreglo con los errores que podrian producirse
   "valueMissing",
   "typeMismatch",
   "patternMismatch",
   "customError",
 ];
 
-const mensajesDeError = {
-  nombre: {
-    valueMissing: "El campo nombre no puede estar vacío",
+const mensajesDeError = {    // objeto con los mensajes respondiendo al error ocurrido 
+  nombre: {                             // corresponde al input de nombre
+    valueMissing: "El campo nombre  no puede estar vacío",
   },
-  email: {
+  email: {                  
     valueMissing: "El campo correo no puede estar vacío",
     typeMismatch: "El correo no es válido",
   },
@@ -38,22 +38,6 @@ const mensajesDeError = {
     valueMissing: "Este campo no puede estar vacío",
     customError: "Debes tener al menos 18 años de edad",
   },
-  numero: {
-    valueMissing: "Este campo no puede estar vacío",
-    patternMismatch: "El formato requerido es XXXXXXXXXX 10 números",
-  },
-  direccion: {
-    valueMissing: "Este campo no puede estar vacío",
-    patternMismatch: "La dirección debe contener entre 10 a 40 caracteres.",
-  },
-  ciudad: {
-    valueMissing: "Este campo no puede estar vacío",
-    patternMismatch: "La ciudad debe contener entre 10 a 40 caracteres.",
-  },
-  estado: {
-    valueMissing: "Este campo no puede estar vacío",
-    patternMismatch: "El estado debe contener entre 10 a 40 caracteres.",
-  },
 };
 
 const validadores = {
@@ -62,15 +46,18 @@ const validadores = {
 
 function mostrarMensajeDeError(tipoDeInput, input) {
   let mensaje = "";
-  tipoDeErrores.forEach((error) => {
-    if (input.validity[error]) {
-      console.log(tipoDeInput, error);
+  tipoDeErrores.forEach((error) => {  // si se encuentra el error procucido en input.validity.  en el arreglo tipoDeErrores[]
+    if (input.validity[error]) {     // se retorna el mensaje de error contenido en el arreglo
+                                
+      console.log("tipoDeInput: ",tipoDeInput,". error:" ,error);
+      console.log("input.validity.valueMissing: ", input.validity.valueMissing);
       console.log(input.validity[error]);
-      console.log(mensajesDeError[tipoDeInput][error]);
-      mensaje = mensajesDeError[tipoDeInput][error];
+      console.log(mensajesDeError[tipoDeInput][error]);   // objeto dentro de otro objeto
+
+      mensaje = mensajesDeError[tipoDeInput][error]; 
     }
   });
-  return mensaje;
+  return mensaje;       // mensaje de error retornado
 }
 
 function validarNacimiento(input) {
