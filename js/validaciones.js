@@ -14,15 +14,15 @@ export function valida(input) {
   }
 }
 
-const tipoDeErrores = [       // arreglo con los errores que podrian producirse
+const tipoDeErrores = [         // arreglo con los errores que podrian producirse
   "valueMissing",
   "typeMismatch",
   "patternMismatch",
   "customError",
 ];
 
-const mensajesDeError = {    // objeto con los mensajes respondiendo al error ocurrido 
-  nombre: {                             // corresponde al input de nombre
+const mensajesDeError = {     // objeto con los mensajes respondiendo al error ocurrido 
+  nombre: {                              // corresponde al input de nombre
     valueMissing: "El campo nombre  no puede estar vacío",
   },
   email: {                  
@@ -46,18 +46,18 @@ const validadores = {
 
 function mostrarMensajeDeError(tipoDeInput, input) {
   let mensaje = "";
-  tipoDeErrores.forEach((error) => {  // si se encuentra el error procucido en input.validity.  en el arreglo tipoDeErrores[]
-    if (input.validity[error]) {     // se retorna el mensaje de error contenido en el arreglo
+  tipoDeErrores.forEach((error) => {   // si se encuentra el error procucido en input.validity.  en el arreglo tipoDeErrores[]
+    if (input.validity[error]) {    // se retorna el mensaje de error contenido en el arreglo
                                 
       console.log("tipoDeInput: ",tipoDeInput,". error:" ,error);
       console.log("input.validity.valueMissing: ", input.validity.valueMissing);
       console.log(input.validity[error]);
-      console.log(mensajesDeError[tipoDeInput][error]);   // objeto dentro de otro objeto
+      console.log(mensajesDeError[tipoDeInput][error]);    // objeto dentro de otro objeto
 
       mensaje = mensajesDeError[tipoDeInput][error]; 
     }
   });
-  return mensaje;       // mensaje de error retornado
+  return mensaje;         // mensaje de error retornado
 }
 
 function validarNacimiento(input) {
