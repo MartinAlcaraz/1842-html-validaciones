@@ -79,3 +79,7 @@ function mayorDeEdad(fecha) {
   );
   return diferenciaFechas <= fechaActual;
 }
+
+function borrar(){
+  
+}
